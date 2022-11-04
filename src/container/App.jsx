@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import { Cards } from '../components/Cards/Cards'
 import './App.css'
 
 const cardImages = [
-    { src: '/img/helmet-1.png' },
-    { src: '/img/potion-1.png' },
-    { src: '/img/ring-1.png' },
-    { src: '/img/scroll-1.png' },
-    { src: '/img/shield-1.png' },
-    { src: '/img/sword-1.png' },
+    { src: '/src/assets/images/helmet-1.png' },
+    { src: '/src/assets/images/potion-1.png' },
+    { src: '/src/assets/images/ring-1.png' },
+    { src: '/src/assets/images/scroll-1.png' },
+    { src: '/src/assets/images/shield-1.png' },
+    { src: '/src/assets/images/sword-1.png' },
 ]
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <div className="App">
                 <h1>Memory game</h1>
                 <button onClick={() => shuffledCards()}>New game</button>
+                <Cards cards={cards} />
             </div>
         </>
     )
