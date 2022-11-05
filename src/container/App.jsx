@@ -3,12 +3,12 @@ import { Cards } from '../components/Cards/Cards'
 import './App.css'
 
 const cardImages = [
-    { src: '/src/assets/images/helmet-1.png' },
-    { src: '/src/assets/images/potion-1.png' },
-    { src: '/src/assets/images/ring-1.png' },
-    { src: '/src/assets/images/scroll-1.png' },
-    { src: '/src/assets/images/shield-1.png' },
-    { src: '/src/assets/images/sword-1.png' },
+    { src: '/src/assets/images/helmet-1.png', matched: true },
+    { src: '/src/assets/images/potion-1.png', matched: true },
+    { src: '/src/assets/images/ring-1.png', matched: true },
+    { src: '/src/assets/images/scroll-1.png', matched: true },
+    { src: '/src/assets/images/shield-1.png', matched: true },
+    { src: '/src/assets/images/sword-1.png', matched: true },
 ]
 
 function App() {
@@ -40,7 +40,15 @@ function App() {
     useEffect(() => {
         if (choiceOne && choiceTwo) {
             if (choiceOne.src == choiceTwo.src) {
-                console.log('yesss')
+                setCards((prevState) => {
+                    return prevState.map((card) => {
+                        if (card.src === choiceOne.src) {
+                            return { ...card, matched: true }
+                        } else {
+                            return card
+                        }
+                    })
+                })
                 resetTurn()
             } else {
                 console.log('nooo')
