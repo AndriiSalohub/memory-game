@@ -14,7 +14,10 @@ const cardImages = [
 function App() {
     const [cards, setCards] = useState([])
     const [turns, setTurns] = useState(0)
+    const [choiceOne, setChoiceOne] = useState(null)
+    const [choiceTwo, setChoiceTwo] = useState(null)
 
+    // *Shuffle cards
     const shuffledCards = () => {
         const shuffledCards = [...cardImages, ...cardImages]
             .sort(() => Math.random() - 0.5)
@@ -23,12 +26,24 @@ function App() {
         setCards(shuffledCards)
         setTurns(0)
     }
+
+    // *Handle a choice
+    const handleChoice = (card) => {
+        if (choiceOne) {
+            setChoiceTwo(card)
+            console.log(choiceTwo)
+        } else {
+            setChoiceOne(card)
+            console.log(choiceOne)
+        }
+    }
+
     return (
         <>
             <div className="App">
                 <h1>Memory game</h1>
                 <button onClick={() => shuffledCards()}>New game</button>
-                <Cards cards={cards} />
+                <Cards cards={cards} handleChoice={handleChoice} />
             </div>
         </>
     )
