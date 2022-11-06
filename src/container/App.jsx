@@ -16,6 +16,7 @@ function App() {
     const [turns, setTurns] = useState(0)
     const [choiceOne, setChoiceOne] = useState(null)
     const [choiceTwo, setChoiceTwo] = useState(null)
+    const [disabled, setDisabled] = useState(false)
 
     // *Shuffle cards
     const shuffledCards = () => {
@@ -39,6 +40,7 @@ function App() {
     // *Compare two selected cards
     useEffect(() => {
         if (choiceOne && choiceTwo) {
+            setDisabled(true)
             if (choiceOne.src == choiceTwo.src) {
                 setCards((prevState) => {
                     return prevState.map((card) => {
@@ -61,6 +63,7 @@ function App() {
         setChoiceOne(null)
         setChoiceTwo(null)
         setTurns((prevState) => prevState + 1)
+        setDisabled(false)
     }
 
     return (
@@ -73,6 +76,7 @@ function App() {
                     handleChoice={handleChoice}
                     choiceOne={choiceOne}
                     choiceTwo={choiceTwo}
+                    disabled={disabled}
                 />
             </div>
         </>
