@@ -2,11 +2,18 @@ import React from 'react'
 import { Card } from '../Card/Card'
 import './Cards.css'
 
-export const Cards = ({ cards, handleChoice }) => {
+export const Cards = ({ cards, handleChoice, choiceOne, choiceTwo }) => {
     return (
         <div className="card-grid">
             {cards.map((card) => (
-                <Card card={card} key={card.id} handleChoice={handleChoice} />
+                <Card
+                    card={card}
+                    key={card.id}
+                    handleChoice={handleChoice}
+                    flipped={
+                        card === choiceOne || card === choiceTwo || card.matched
+                    }
+                />
             ))}
         </div>
     )

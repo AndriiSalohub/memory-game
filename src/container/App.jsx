@@ -3,12 +3,12 @@ import { Cards } from '../components/Cards/Cards'
 import './App.css'
 
 const cardImages = [
-    { src: '/src/assets/images/helmet-1.png', matched: true },
-    { src: '/src/assets/images/potion-1.png', matched: true },
-    { src: '/src/assets/images/ring-1.png', matched: true },
-    { src: '/src/assets/images/scroll-1.png', matched: true },
-    { src: '/src/assets/images/shield-1.png', matched: true },
-    { src: '/src/assets/images/sword-1.png', matched: true },
+    { src: '/src/assets/images/helmet-1.png', matched: false },
+    { src: '/src/assets/images/potion-1.png', matched: false },
+    { src: '/src/assets/images/ring-1.png', matched: false },
+    { src: '/src/assets/images/scroll-1.png', matched: false },
+    { src: '/src/assets/images/shield-1.png', matched: false },
+    { src: '/src/assets/images/sword-1.png', matched: false },
 ]
 
 function App() {
@@ -51,8 +51,7 @@ function App() {
                 })
                 resetTurn()
             } else {
-                console.log('nooo')
-                resetTurn()
+                setTimeout(() => resetTurn(), 1000)
             }
         }
     }, [choiceOne, choiceTwo])
@@ -69,7 +68,12 @@ function App() {
             <div className="App">
                 <h1>Memory game</h1>
                 <button onClick={() => shuffledCards()}>New game</button>
-                <Cards cards={cards} handleChoice={handleChoice} />
+                <Cards
+                    cards={cards}
+                    handleChoice={handleChoice}
+                    choiceOne={choiceOne}
+                    choiceTwo={choiceTwo}
+                />
             </div>
         </>
     )
