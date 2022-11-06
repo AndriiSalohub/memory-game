@@ -24,6 +24,8 @@ function App() {
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }))
 
+        setChoiceOne(null)
+        setChoiceTwo(null)
         setCards(shuffledCards)
         setTurns(0)
     }
@@ -66,6 +68,10 @@ function App() {
         setDisabled(false)
     }
 
+    useEffect(() => {
+        shuffledCards()
+    }, [])
+
     return (
         <>
             <div className="App">
@@ -78,6 +84,7 @@ function App() {
                     choiceTwo={choiceTwo}
                     disabled={disabled}
                 />
+                <p>Turns: {turns}</p>
             </div>
         </>
     )
